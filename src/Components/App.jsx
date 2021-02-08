@@ -8,8 +8,16 @@ import BabyIpsum from './BabyIpsum';
 class App extends Component {
   state = {
     step: 1,
-    valid: true
+    valid: true,
   };
+
+  componentDidMount() {
+    console.log('component mounted');
+  }
+
+  componentDidUpdate() {
+    console.log('component updated');
+  }
 
   handleClick = () => {
     if (this.state.valid) {
@@ -27,17 +35,13 @@ class App extends Component {
     switch (this.state.step) {
       case 1:
         console.log('Hello Case 1');
-        return <Redirect push to="/lorem-ipsum" />
+        return <Redirect push to="/lorem-ipsum" />;
       case 2:
         console.log('Hello Case 2');
-        return (
-          <Redirect push to="/kitty-ipsum" />
-        );
+        return <Redirect push to="/kitty-ipsum" />;
       case 3:
         console.log('Hello Case 3');
-        return (
-          <Redirect push to="/baby-ipsum" />
-        );
+        return <Redirect push to="/baby-ipsum" />;
       default:
         console.log("This shouldn't run");
         break;
@@ -51,15 +55,15 @@ class App extends Component {
         {this.routeDecider()}
         <Route
           path="/lorem-ipsum"
-          render={routeProps => <LoremIpsum {...routeProps} />}
+          render={(routeProps) => <LoremIpsum {...routeProps} />}
         />
         <Route
           path="/kitty-ipsum"
-          render={routeProps => <KittyIpsum {...routeProps} />}
+          render={(routeProps) => <KittyIpsum {...routeProps} />}
         />
         <Route
           path="/baby-ipsum"
-          render={routeProps => <BabyIpsum {...routeProps} />}
+          render={(routeProps) => <BabyIpsum {...routeProps} />}
         />
         <button onClick={this.handleClick}>What Ipsum?</button>
       </div>
